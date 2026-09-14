@@ -6,9 +6,8 @@ holds the visual and tabular source material.
 | File | Content |
 |---|---|
 | `esp32_fall_detector_pin_diagram.svg` | schematic pin diagram (ESP32 ↔ MPU6050, buzzer, LED) |
-| `wiring_diagram.png` | wiring diagram used in the technical package |
 | `esp32_mpu6050_breadboard_setup.png` | photo-style breadboard overview |
-| `realistic_esp32_wiring_annotated.png` | annotated realistic wiring figure (used in reports/presentation) |
+| `realistic_esp32_wiring_annotated.png` | annotated realistic wiring figure (used in reports/presentation; an identical duplicate named wiring_diagram.png in the source package was dropped) |
 | `realistic_schematic_wiring.png` | schematic-style wiring figure |
 | `esp32_fall_detector_minimum_bom.docx` | budget sheet with Dhaka estimated prices |
 | `complete_pin_connections.docx` | full 15-row connection sheet + breadboard rails + power options + final checklist |

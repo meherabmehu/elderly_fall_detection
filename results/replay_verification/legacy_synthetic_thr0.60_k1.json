@@ -1,0 +1,85 @@
+{
+  "summary": {
+    "threshold": 0.6,
+    "k": 1,
+    "n_windows": 7,
+    "n_alarms": 7,
+    "first_alarm_right_edge": 99,
+    "impact_sample_50hz": 104,
+    "lead_time_ms": 100.0,
+    "max_p_fall": 0.6055,
+    "max_p_alarm": 1.0,
+    "model": "models/legacy_synthetic/model.tflite",
+    "model_bytes": 19928,
+    "input_scale": 0.11342239379882812,
+    "input_zero_point": 12,
+    "output_scale": 0.00390625,
+    "output_zero_point": -128,
+    "norm": "global"
+  },
+  "records": [
+    {
+      "window_start": 0,
+      "right_edge": 99,
+      "p_bkg": 0.0,
+      "p_alert": 0.5,
+      "p_fall": 0.5,
+      "p_alarm": 1.0,
+      "alarm": true
+    },
+    {
+      "window_start": 25,
+      "right_edge": 124,
+      "p_bkg": 0.0,
+      "p_alert": 0.4883,
+      "p_fall": 0.5117,
+      "p_alarm": 1.0,
+      "alarm": true
+    },
+    {
+      "window_start": 50,
+      "right_edge": 149,
+      "p_bkg": 0.0,
+      "p_alert": 0.5,
+      "p_fall": 0.5,
+      "p_alarm": 1.0,
+      "alarm": true
+    },
+    {
+      "window_start": 75,
+      "right_edge": 174,
+      "p_bkg": 0.0,
+      "p_alert": 0.4766,
+      "p_fall": 0.5195,
+      "p_alarm": 0.9961,
+      "alarm": true
+    },
+    {
+      "window_start": 100,
+      "right_edge": 199,
+      "p_bkg": 0.0,
+      "p_alert": 0.457,
+      "p_fall": 0.543,
+      "p_alarm": 1.0,
+      "alarm": true
+    },
+    {
+      "window_start": 125,
+      "right_edge": 224,
+      "p_bkg": 0.0039,
+      "p_alert": 0.3906,
+      "p_fall": 0.6055,
+      "p_alarm": 0.9961,
+      "alarm": true
+    },
+    {
+      "window_start": 150,
+      "right_edge": 249,
+      "p_bkg": 0.0,
+      "p_alert": 0.5,
+      "p_fall": 0.5,
+      "p_alarm": 1.0,
+      "alarm": true
+    }
+  ]
+}

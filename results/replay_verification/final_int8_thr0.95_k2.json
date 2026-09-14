@@ -1,0 +1,85 @@
+{
+  "summary": {
+    "threshold": 0.95,
+    "k": 2,
+    "n_windows": 7,
+    "n_alarms": 1,
+    "first_alarm_right_edge": 149,
+    "impact_sample_50hz": 104,
+    "lead_time_ms": -900.0,
+    "max_p_fall": 0.9961,
+    "max_p_alarm": 0.9961,
+    "model": "models/final_int8/model.tflite",
+    "model_bytes": 23080,
+    "input_scale": 0.06001817435026169,
+    "input_zero_point": -9,
+    "output_scale": 0.00390625,
+    "output_zero_point": -128,
+    "norm": "instance"
+  },
+  "records": [
+    {
+      "window_start": 0,
+      "right_edge": 99,
+      "p_bkg": 0.0781,
+      "p_alert": 0.9219,
+      "p_fall": 0.0,
+      "p_alarm": 0.9219,
+      "alarm": false
+    },
+    {
+      "window_start": 25,
+      "right_edge": 124,
+      "p_bkg": 0.0,
+      "p_alert": 0.0,
+      "p_fall": 0.9961,
+      "p_alarm": 0.9961,
+      "alarm": false
+    },
+    {
+      "window_start": 50,
+      "right_edge": 149,
+      "p_bkg": 0.0,
+      "p_alert": 0.0,
+      "p_fall": 0.9961,
+      "p_alarm": 0.9961,
+      "alarm": true
+    },
+    {
+      "window_start": 75,
+      "right_edge": 174,
+      "p_bkg": 0.0039,
+      "p_alert": 0.0,
+      "p_fall": 0.9961,
+      "p_alarm": 0.9961,
+      "alarm": false
+    },
+    {
+      "window_start": 100,
+      "right_edge": 199,
+      "p_bkg": 0.1328,
+      "p_alert": 0.0,
+      "p_fall": 0.8633,
+      "p_alarm": 0.8633,
+      "alarm": false
+    },
+    {
+      "window_start": 125,
+      "right_edge": 224,
+      "p_bkg": 0.9961,
+      "p_alert": 0.0039,
+      "p_fall": 0.0039,
+      "p_alarm": 0.0078,
+      "alarm": false
+    },
+    {
+      "window_start": 150,
+      "right_edge": 249,
+      "p_bkg": 0.9844,
+      "p_alert": 0.0156,
+      "p_fall": 0.0,
+      "p_alarm": 0.0156,
+      "alarm": false
+    }
+  ]
+}

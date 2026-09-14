@@ -10,7 +10,8 @@ project's physical-hardware work; **[NEW]** = created for this repository;
 ├── ATTRIBUTION.md                     [NEW]   provenance & ownership
 ├── .gitignore                         [NEW]
 │
-├── datasets/README.md                 [NEW]   acquisition links, expected layouts, citation duties (no raw data — by design)
+├── datasets/README.md                 [NEW]   where each dataset lives + layouts + citation duties
+├── datasets/SHA256SUMS.txt              [NEW]   sha256 of the two release dataset archives
 │
 ├── docs/                              [NEW]   knowledge map, methodology, architecture, deployment,
 │   │                                          hardware, Wokwi, reproducibility, experiments, results provenance,
@@ -57,7 +58,7 @@ project's physical-hardware work; **[NEW]** = created for this repository;
 ├── experiments/hardware_measurement/  [REF]   hardware_measurements.json (null template), on_device_trials.md (blank)
 ├── experiments/README.md              [NEW]
 │
-├── tools/                             [NEW]   replay_desktop_check, serial_capture, parse_measure_log (+ README)
+├── tools/                             [NEW]   download_datasets, replay_desktop_check, serial_capture, parse_measure_log (+ README)
 │
 ├── hardware/                          [HW]    pin diagram SVG, annotated wiring PNGs, BOM + connection sheets (docx)
 ├── reports/                           [HW]    AI-free reports (pdf), proposal report (docx)
@@ -76,6 +77,10 @@ project's physical-hardware work; **[NEW]** = created for this repository;
 └── legacy/                            [LEGACY] snapshot of the synthetic-pipeline project (own src/, notebooks,
                                                models, results, firmware, wokwi) — superseded, see legacy/README.md
 ```
+
+Dataset archives sit in the GitHub release `datasets-v1` (SisFall 213.6 MB,
+UMAFall 78.5 MB), checksummed in `datasets/SHA256SUMS.txt`; KFall and
+FallAllD remain original-source-only (see `datasets/README.md`).
 
 ## Identity checksums (re-verify any time)
 

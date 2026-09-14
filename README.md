@@ -31,6 +31,48 @@ audit trail.
 
 ---
 
+## What the AI adds ("AI impact")
+
+The device runs a classical threshold detector **and** the INT8 CNN on the
+same sensor stream. Measured head-to-head:
+
+| Comparison | Classical/threshold | INT8 CNN | Source |
+|---|---:|---:|---|
+| Pre-impact task, KFall (macro-F1) | 0.3262 (SMV threshold) | **0.8742** | Table I(b) |
+| KFall trial-level vs Yu (2021) benchmark | 0.9550 / 0.8343 / 333 ms | **0.9962 / 0.9465 / 393 ms** | trial-level eval |
+| Post-fall task, SisFall (macro-F1) | 0.4837 (SMV threshold) | **0.9502** | Table I |
+
+The AI's contribution is *detection before impact, on cheap hardware* — what a
+threshold cannot do — while its two known weaknesses (false alarms/hour,
+cross-dataset shift) are measured and reported, not hidden. Full analysis:
+[`docs/AI_IMPACT.md`](docs/AI_IMPACT.md). On-device CNN-vs-rule trials
+(`mode both`) are the pending bench protocol in
+`experiments/hardware_measurement/`.
+
+---
+
+## Where the model comes from (training)
+
+The model was trained with the pipeline in [`training/`](training/):
+
+```text
+raw datasets (datasets/)  ->  training/src/fdlib (frozen 50 Hz / 100x6 preprocessing)
+  ->  Kaggle notebooks nb00..nb07 (probe, preprocess, E1/E2/E3/E5 experiments,
+      INT8 export, final model)  ->  models/final_int8/model.tflite + model.h
+```
+
+- `training/src/fdlib/` — the shared library (preprocessing contract,
+  dataset parsers, models, baselines, metrics, fold runner, TFLite export)
+- `training/kaggle/nb00_probe … nb07_final/` — the exact scripts that
+  produced every result, run via `training/scripts/run_kernel.py`
+- Run log: `results/kaggle_reference/experiment_log.csv`; re-run guide:
+  [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) (Level 3)
+
+The trained model itself (23,080-byte INT8, 7,947 params) and its model card
+are in [`models/final_int8/`](models/final_int8/README.md).
+
+---
+
 ## System overview
 
 ```text
@@ -153,16 +195,28 @@ python -m venv .venv && .venv/bin/pip install tensorflow
 ### 4. Reproduce the training/evaluation pipeline
 
 The full pipeline (datasets → windows → E1/E2/E3/E5 → INT8 export) is scripted
-under [`training/`](training/) and runs on Kaggle GPU. Raw datasets are **not**
-in this repository; fetch instructions and expected layouts are in
-[`datasets/README.md`](datasets/README.md).
+under [`training/`](training/) and runs on Kaggle GPU.
+
+### 5. Get the datasets
+
+```bash
+python tools/download_datasets.py --extract     # SisFall + UMAFall from the
+                                                # repo's releases, sha256-checked
+```
+
+**SisFall** and **UMAFall** are attached to the GitHub
+[`datasets-v1` release](https://github.com/meherabmehu/elderly_fall_detection/releases/tag/datasets-v1)
+(checksummed in `datasets/SHA256SUMS.txt`). **KFall** and **FallAllD** are
+deliberately not redistributed (KFall's terms forbid third-party transfer;
+FallAllD needs an IEEE DataPort login) — fetch links and expected layouts are
+in [`datasets/README.md`](datasets/README.md).
 Guide: [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
 ## Repository structure
 
 ```text
 ├── docs/                  all documentation (start: KNOWLEDGE_MAP.md)
-├── datasets/              dataset acquisition + expected layouts (no raw data)
+├── datasets/              dataset checksums + acquisition (raw archives live in the repo's releases)
 ├── training/              fdlib pipeline: library, Kaggle notebooks, scripts
 ├── results/               Kaggle reference results, tables, replay verification
 ├── models/                final_int8/ (deployed) + legacy_synthetic/ (superseded)

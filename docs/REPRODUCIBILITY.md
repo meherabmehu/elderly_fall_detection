@@ -45,8 +45,11 @@ cd wokwi/final_model && pio run && pio run -e esp32dev_live
 The pipeline is designed so that **nothing is clicked in a browser** beyond
 the one-time Kaggle account setup.
 
-1. Fetch the four datasets from their official sources and note your access
-   dates (`datasets/README.md`). KFall must not be redistributed.
+1. Fetch the four datasets and note your access dates (`datasets/README.md`):
+   SisFall and UMAFall come from this repo's [`datasets-v1` release](https://github.com/meherabmehu/elderly_fall_detection/releases/tag/datasets-v1)
+   via `python tools/download_datasets.py --extract` (sha256 against
+   `datasets/SHA256SUMS.txt`); FallAllD from IEEE DataPort (free account);
+   KFall only via official registration — it must not be redistributed.
 2. Create the Kaggle datasets listed in `training/PROJECT_PLAN.md` (private is
    fine) and a Kaggle API token (`~/.kaggle/kaggle.json`).
 3. Environment:

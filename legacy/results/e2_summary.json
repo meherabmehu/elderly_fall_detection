@@ -1,0 +1,22 @@
+[
+  {
+    "fold": "A",
+    "test": "FallAllD",
+    "none": 0.1918
+  },
+  {
+    "fold": "B",
+    "test": "KFall",
+    "none": 0.2764
+  },
+  {
+    "fold": "C",
+    "test": "SisFall",
+    "none": 0.1294
+  },
+  {
+    "fold": "D",
+    "test": "UMAFall",
+    "none": 0.5337
+  }
+]

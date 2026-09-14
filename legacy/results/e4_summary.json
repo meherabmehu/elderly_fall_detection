@@ -1,0 +1,13 @@
+{
+  "fp32_size_kb": 163.7255859375,
+  "tflite_size_kb": 19.4609375,
+  "tensor_bytes_est": 25194,
+  "latency_ms_host_int8": 0.022160500066092936,
+  "f1_fp32": 0.6153846153846154,
+  "f1_int8": 0.6260869565217392,
+  "f1_delta_pp": 1.070234113712376,
+  "input_scale": 0.11342239379882812,
+  "input_zero_point": 12,
+  "test_windows": 995,
+  "params": 8219
+}

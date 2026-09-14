@@ -2,28 +2,32 @@
 
 ## Where the datasets are
 
-Two datasets are attached to this repository's GitHub release
-[`datasets-v1`](https://github.com/meherabmehu/elderly_fall_detection/releases/tag/datasets-v1),
-verifiable against `SHA256SUMS.txt` and fetchable with
-[`tools/download_datasets.py`](../tools/download_datasets.py):
+**SisFall and UMAFall raw files are vendored directly in this tree** — clone
+the repo and the data is ready, no account or download step needed:
 
-| Dataset | Where | License / obligation |
-|---|---|---|
-| **SisFall** | Release asset `SisFall.zip` (213.6 MB; full original 38 subjects, 4,585 files) | public research dataset — **cite Sucerquia et al. 2017** |
-| **UMAFall** | Release asset `UMAFall_Dataset.zip` (78.5 MB; 746 CSV trials, corrected version) | **CC BY 4.0** — cite Casilari et al. 2017 |
-| **FallAllD** | IEEE DataPort (free account required) — [link](https://ieee-dataport.org/open-access/fallalld-comprehensive-dataset-human-falls-and-activities-daily-living) | cite Saleh et al. 2020 |
-| **KFall** | **Never redistributable** — register at the [official site](https://sites.google.com/view/kfalldataset/home); its terms forbid transferring the dataset to third parties | cite Yu et al. 2021 |
+| Dataset | In-tree path | Contents | Licence / obligation |
+|---|---|---|---|
+| **SisFall** | `datasets/sisfall/SisFall_dataset/` | complete original release: 38 subjects, 4,505 trial `.txt` files + Readme + Supplementary | public research dataset — **cite Sucerquia et al. 2017** |
+| **UMAFall** | `datasets/umafall/` | 746 trial `.csv` files (corrected version) | **CC BY 4.0** — cite Casilari et al. 2017 |
+| **FallAllD** | *not vendored* — IEEE DataPort (free account): [link](https://ieee-dataport.org/open-access/fallalld-comprehensive-dataset-human-falls-and-activities-daily-living) | | cite Saleh et al. 2020 |
+| **KFall** | *not vendored* — its terms **forbid transferring the dataset to any third party**: [register at the official site](https://sites.google.com/view/kfalldataset/home) | | cite Yu et al. 2021 |
 
-Why not committed into the git tree: KFall's license forbids it; SisFall's
-archive exceeds GitHub's 100 MB file limit; raw data in git history makes
-every future clone heavy forever. Release assets (2 GB each) are the right
-place, checksummed here in the repo.
+The same two archives (SisFall.zip, UMAFall_Dataset.zip) also sit in the
+[`datasets-v1` release](https://github.com/meherabmehu/elderly_fall_detection/releases/tag/datasets-v1)
+as checksummed single-file downloads (`datasets/SHA256SUMS.txt`) for anyone
+who prefers an archive over a full clone. *Why not everything in the tree:*
+KFall's licence forbids redistribution anywhere; FallAllD requires a personal
+IEEE DataPort login.
 
-## Fetch + verify + extract
+## Verify / re-fetch
+
+The vendored files are already laid out for the parsers, so normally nothing
+to do. To re-fetch the two archives instead of cloning (e.g. for a fresh
+machine without git):
 
 ```bash
-python tools/download_datasets.py --extract
-# or manually: download from the release page, then
+python tools/download_datasets.py --extract   # pulls the release assets
+# or download from the release page and
 sha256sum -c datasets/SHA256SUMS.txt
 ```
 
@@ -31,8 +35,8 @@ sha256sum -c datasets/SHA256SUMS.txt
 
 ```text
 datasets/
-├── sisfall/     SisFall_dataset/SAxx/Fxx_SAxx_Rxx.txt …   (from release asset)
-├── umafall/     UMAFall_Subject_XX_(ADL|Fall)_*.csv       (from release asset)
+├── sisfall/     SisFall_dataset/SAxx/Fxx_SAxx_Rxx.txt …   (vendored in-tree)
+├── umafall/     UMAFall_Subject_XX_(ADL|Fall)_*.csv       (vendored in-tree)
 ├── fallalld/    FallAllD/ Subject*/(ADL|Fall)*/(acc|gyr)_*.csv or official .pkl   (you fetch)
 └── kfall/       KFall Dataset/…/sensor_data/SAxxTxxRxx.csv + label_data/*.xlsx   (you register & fetch)
 ```

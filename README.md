@@ -199,17 +199,13 @@ under [`training/`](training/) and runs on Kaggle GPU.
 
 ### 5. Get the datasets
 
-```bash
-python tools/download_datasets.py --extract     # SisFall + UMAFall from the
-                                                # repo's releases, sha256-checked
-```
-
-**SisFall** and **UMAFall** are attached to the GitHub
-[`datasets-v1` release](https://github.com/meherabmehu/elderly_fall_detection/releases/tag/datasets-v1)
-(checksummed in `datasets/SHA256SUMS.txt`). **KFall** and **FallAllD** are
-deliberately not redistributed (KFall's terms forbid third-party transfer;
-FallAllD needs an IEEE DataPort login) — fetch links and expected layouts are
-in [`datasets/README.md`](datasets/README.md).
+**SisFall** (`datasets/sisfall/`) and **UMAFall** (`datasets/umafall/`) raw
+files are already inside the repo tree — cloning gets you the data. Single-file
+archives also live in the [`datasets-v1` release](https://github.com/meherabmehu/elderly_fall_detection/releases/tag/datasets-v1)
+(`datasets/SHA256SUMS.txt`). **KFall** and **FallAllD** are deliberately not
+redistributed (KFall's terms forbid third-party transfer; FallAllD needs an
+IEEE DataPort login) — fetch links and expected layouts are in
+[`datasets/README.md`](datasets/README.md).
 Guide: [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
 ## Repository structure

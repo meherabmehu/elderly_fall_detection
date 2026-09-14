@@ -18,13 +18,7 @@ data/raw/
 data/cache/
 .DS_Store
 
-# --- Datasets: raw data is NEVER committed (see datasets/README.md) ---
-datasets/raw/
-SisFall*/
-KFall*/
-FallAllD*/
-UMAFall*/
-
 # --- OS / editor ---
 Thumbs.db
+desktop.ini
 .vscode/settings.json

@@ -1,0 +1,30 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- PlatformIO / build output ---
+.pio/
+build/
+*.elf
+*.bin
+
+# --- Kaggle / local caches ---
+kaggle_out/
+*.npz
+data/raw/
+data/cache/
+.DS_Store
+
+# --- Datasets: raw data is NEVER committed (see datasets/README.md) ---
+datasets/raw/
+SisFall*/
+KFall*/
+FallAllD*/
+UMAFall*/
+
+# --- OS / editor ---
+Thumbs.db
+.vscode/settings.json

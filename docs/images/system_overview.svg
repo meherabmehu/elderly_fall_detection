@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 420" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect x="4" y="4" width="1152" height="412" rx="16" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+
+  <!-- GROUP 1 : sensing -->
+  <text x="40" y="40" font-size="15" font-weight="700" fill="#1f2328">Body-worn sensing (waist)</text>
+  <rect x="24" y="52" width="212" height="344" rx="12" fill="#f0f7f0" stroke="#b7dcc2" stroke-width="1.5"/>
+  <rect x="42" y="78" width="176" height="96" rx="10" fill="#ffffff" stroke="#2da44e" stroke-width="1.5"/>
+  <text x="130" y="104" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">MPU6050 (GY-521)</text>
+  <text x="130" y="126" font-size="12.5" fill="#57606a" text-anchor="middle">6-axis IMU, AD0 → GND</text>
+  <text x="130" y="146" font-size="12.5" fill="#57606a" text-anchor="middle">±16 g · ±2000 °/s · 0x68</text>
+  <text x="130" y="163" font-size="12.5" fill="#57606a" text-anchor="middle">verified on hardware</text>
+  <rect x="42" y="192" width="176" height="80" rx="10" fill="#ffffff" stroke="#2da44e" stroke-width="1.5"/>
+  <text x="130" y="218" font-size="13" fill="#1f2328" text-anchor="middle">50 Hz hardware timer</text>
+  <text x="130" y="238" font-size="13" fill="#57606a" text-anchor="middle">(DLPF on, no delay())</text>
+  <text x="130" y="258" font-size="13" fill="#57606a" text-anchor="middle">I²C @ 400 kHz</text>
+  <rect x="42" y="290" width="176" height="86" rx="10" fill="#ffffff" stroke="#2da44e" stroke-width="1.5"/>
+  <text x="130" y="316" font-size="13" fill="#1f2328" text-anchor="middle">6 channels per sample</text>
+  <text x="130" y="336" font-size="12.5" fill="#57606a" text-anchor="middle">ax ay az (g)</text>
+  <text x="130" y="354" font-size="12.5" fill="#57606a" text-anchor="middle">gx gy gz (°/s)</text>
+
+  <!-- arrow 1 -->
+  <line x1="236" y1="216" x2="300" y2="216" stroke="#57606a" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="268" y="204" font-size="12" fill="#57606a" text-anchor="middle">3V3 + I²C</text>
+
+  <!-- GROUP 2 : inference -->
+  <text x="322" y="40" font-size="15" font-weight="700" fill="#1f2328">On-device inference — ESP32 DevKit V1</text>
+  <rect x="304" y="52" width="448" height="344" rx="12" fill="#eef2fb" stroke="#b9c8ef" stroke-width="1.5"/>
+  <g font-size="13" fill="#1f2328">
+    <rect x="322" y="76" width="412" height="42" rx="8" fill="#ffffff" stroke="#4a6fd0" stroke-width="1.5"/>
+    <text x="336" y="102"><tspan font-weight="700">1 · ring buffer 100 × 6</tspan><tspan fill="#57606a"> — 2.0 s window, 0.5 s stride</tspan></text>
+    <rect x="322" y="126" width="412" height="42" rx="8" fill="#ffffff" stroke="#4a6fd0" stroke-width="1.5"/>
+    <text x="336" y="152"><tspan font-weight="700">2 · convert</tspan><tspan fill="#57606a"> — raw counts → g and °/s (float32)</tspan></text>
+    <rect x="322" y="176" width="412" height="42" rx="8" fill="#e8f6ec" stroke="#1a7f37" stroke-width="2"/>
+    <text x="336" y="202"><tspan font-weight="700">3 · per-window instance norm</tspan><tspan fill="#57606a"> — float32, before quantisation</tspan></text>
+    <rect x="322" y="226" width="412" height="42" rx="8" fill="#fff6e8" stroke="#9a6700" stroke-width="2"/>
+    <text x="336" y="252"><tspan font-weight="700">4 · INT8 quantise</tspan><tspan fill="#57606a"> — model's own scale / zero-point</tspan></text>
+    <rect x="322" y="276" width="412" height="42" rx="8" fill="#ffffff" stroke="#4a6fd0" stroke-width="1.5"/>
+    <text x="336" y="302"><tspan font-weight="700">5 · separable CNN</tspan><tspan fill="#57606a"> — 7,947 params · 22.5 KB (TFLM)</tspan></text>
+    <rect x="322" y="326" width="412" height="42" rx="8" fill="#ffffff" stroke="#4a6fd0" stroke-width="1.5"/>
+    <text x="336" y="352"><tspan font-weight="700">6 · decision</tspan><tspan fill="#57606a"> — p_alert + p_fall ≥ 0.95, k-of-n, cooldown</tspan></text>
+  </g>
+
+  <!-- arrow 2 -->
+  <line x1="752" y1="216" x2="816" y2="216" stroke="#57606a" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="784" y="204" font-size="12" fill="#57606a" text-anchor="middle">GPIO</text>
+
+  <!-- GROUP 3 : outputs -->
+  <text x="838" y="40" font-size="15" font-weight="700" fill="#1f2328">Alarm &amp; monitoring</text>
+  <rect x="820" y="52" width="316" height="344" rx="12" fill="#fdeeee" stroke="#f0b4b4" stroke-width="1.5"/>
+  <rect x="838" y="76" width="280" height="74" rx="10" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="978" y="106" font-size="14.5" font-weight="700" fill="#1f2328" text-anchor="middle">Active buzzer — GPIO 4</text>
+  <text x="978" y="130" font-size="12.5" fill="#57606a" text-anchor="middle">fires on confirmed fall</text>
+  <rect x="838" y="164" width="280" height="74" rx="10" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="978" y="194" font-size="14.5" font-weight="700" fill="#1f2328" text-anchor="middle">Red LED — GPIO 2 (220 Ω)</text>
+  <text x="978" y="218" font-size="12.5" fill="#57606a" text-anchor="middle">visual alert indication</text>
+  <rect x="838" y="252" width="280" height="104" rx="10" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="978" y="282" font-size="14.5" font-weight="700" fill="#1f2328" text-anchor="middle">Serial @ 115200</text>
+  <text x="978" y="304" font-size="12.5" fill="#57606a" text-anchor="middle">p_bkg / p_alert / p_fall per window</text>
+  <text x="978" y="322" font-size="12.5" fill="#57606a" text-anchor="middle">commands: help · test · measure</text>
+  <text x="978" y="340" font-size="12.5" fill="#57606a" text-anchor="middle">mode cnn | rule | both</text>
+</svg>

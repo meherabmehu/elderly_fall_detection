@@ -1,2 +1,6 @@
 8a11930f6f0533a6ecda31f35a90d23de674686b7d6e5bc5deba8132e3817b04  SisFall.zip
 927be970946c7ab2cd203ca0ab466dc3f513d7000ae774bad8116904c570bcbc  UMAFall_Dataset.zip
+# FallAllD pickles — vendored split; rebuild first: cat fallalld/<name>.part-* > fallalld/<name>
+5ada697ff106525c0a4ab4e88d6993f2ea732a59e95747c792a73fd3686788dd  fallalld/FallAllD.pkl
+ed897e2fd24350ceecdc1512662fd842baa3401fbf578f13e5b7773609866542  fallalld/FallAllD_40SamplesPerSec_ActivityIdsFiltered.pkl
+af7b04c9a08bd75a17ff241ecccc7497a09cebfe1561c97d24785a45081d5baf  fallalld/activity_info.pkl

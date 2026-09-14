@@ -199,12 +199,18 @@ under [`training/`](training/) and runs on Kaggle GPU.
 
 ### 5. Get the datasets
 
-**SisFall** (`datasets/sisfall/`) and **UMAFall** (`datasets/umafall/`) raw
-files are already inside the repo tree — cloning gets you the data. Single-file
+**All four raw datasets are vendored directly inside the repo tree** — cloning
+gets you the data, no account or login anywhere: **SisFall**
+(`datasets/sisfall/`), **UMAFall** (`datasets/umafall/`), **KFall**
+(`datasets/kfall/`) and **FallAllD** (`datasets/fallalld/`). KFall and FallAllD
+come from their public Kaggle mirrors; each folder carries a `NOTICE.md` with
+source, citation duty and upstream terms (KFall's authors ask that users
+register at the official site — if you publish on KFall, register and cite).
+The two large FallAllD pickles exceed GitHub's 100 MB per-file limit, so they
+are stored as `.part-*` chunks — rebuild the byte-exact originals with one
+`cat` command (see `datasets/fallalld/NOTICE.md`). Single-file SisFall/UMAFall
 archives also live in the [`datasets-v1` release](https://github.com/meherabmehu/elderly_fall_detection/releases/tag/datasets-v1)
-(`datasets/SHA256SUMS.txt`). **KFall** and **FallAllD** are deliberately not
-redistributed (KFall's terms forbid third-party transfer; FallAllD needs an
-IEEE DataPort login) — fetch links and expected layouts are in
+(`datasets/SHA256SUMS.txt`). Layouts and roles:
 [`datasets/README.md`](datasets/README.md).
 Guide: [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
@@ -212,7 +218,7 @@ Guide: [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
 ```text
 ├── docs/                  all documentation (start: KNOWLEDGE_MAP.md)
-├── datasets/              dataset checksums + acquisition (raw archives live in the repo's releases)
+├── datasets/              all four raw datasets vendored in-tree (+ checksums, notices)
 ├── training/              fdlib pipeline: library, Kaggle notebooks, scripts
 ├── results/               Kaggle reference results, tables, replay verification
 ├── models/                final_int8/ (deployed) + legacy_synthetic/ (superseded)

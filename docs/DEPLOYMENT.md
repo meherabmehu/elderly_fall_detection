@@ -87,7 +87,7 @@ pio device monitor -p COMx -b 115200
 |---|---|---|
 | `firmware/esp32_ai_final_live_deployment/` | live AI (CNN + rule), core 3.x timer | **physically verified** build |
 | `firmware/fall_detector_core2x/` | live AI, core 2.x timer API | reference build of the same logic |
-| `firmware/esp32_ai_final_millis_sampling/` | live AI with `millis()` polling instead of the timer | compatibility fallback; timer jitter risk noted in comments |
+| `firmware/esp32_ai_final_millis_sampling/` | live AI with `millis()` polling instead of the timer | compatibility fallback; keep the same three-file layout (sketch + `model.h` + `norm_constants.h` as a record) |
 | `firmware/esp32_usb_rule_based_fall_detector/` | AI-free two-stage rule detector | physically verified baseline |
 | `firmware/esp32_fall_detector_demo_final/` | AI-free demo (safe tilt gesture) | presentation use only |
 | `firmware/esp32_initial_hardware_test/` | bring-up: I²C scan, raw values, manual alarm | first-flash test |

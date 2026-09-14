@@ -151,7 +151,10 @@ Use a protected TP4056 board. Do not connect the LiPo directly to the ESP32 3V3 
 
 ## 4. Dataset sources
 
-Raw datasets are not redistributed in this repository. Download them from the authorised sources and follow their terms and citation requirements.
+Raw datasets were not copied into this legacy snapshot — the repository root
+now vendors all four under `datasets/` (see `datasets/README.md`). Download
+originals from the authorised sources and follow their terms and citation
+requirements.
 
 - **SisFall Enhanced:** [Kaggle](https://www.kaggle.com/datasets/nvnikhil0001/sisfall-enhanced/data)
 - **KFall:** [Official KFall page](https://sites.google.com/view/kfalldataset/home)

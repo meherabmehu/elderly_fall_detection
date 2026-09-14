@@ -19,7 +19,7 @@ Falls as a health burden; why wearable detection; the two gaps this paper addres
   on desktop GPUs. Papers combining leave-one-dataset-out evaluation *and* real MCU
   measurements are rare.
 
-Contributions C1, C2, C3 as stated in [PROJECT_PLAN.md](../PROJECT_PLAN.md).
+Contributions C1, C2, C3 as stated in [PROJECT_PLAN.md](../../training/PROJECT_PLAN.md).
 
 ## 2. Related work
 

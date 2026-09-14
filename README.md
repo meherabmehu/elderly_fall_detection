@@ -270,6 +270,14 @@ al. 2018/2020 (SisFall Enhanced annotations), Yu et al. 2021 (KFall), Saleh et
 al. 2020 (FallAllD) and Casilari et al. 2017 (UMAFall). BibTeX:
 [`paper_support/refs.bib`](paper_support/refs.bib).
 
+## License
+
+This repository's own code and documentation are released under the
+[MIT License](LICENSE). The datasets under `datasets/` remain the property of
+their respective publishers and are governed by their own licences and terms
+— see the `NOTICE.md` in each dataset folder and
+[`datasets/README.md`](datasets/README.md).
+
 ## Safety
 
 This is a research prototype, **not a certified medical device**. Test only

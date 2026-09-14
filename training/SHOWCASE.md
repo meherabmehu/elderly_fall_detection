@@ -143,4 +143,4 @@ Strap the device at the **waist**, buzzer audible. Have a mattress or thick cush
 
 Wear it for an hour of ordinary activity, no falls, then `measure`. The alarm count
 **is** the real false-alarm rate. That single number would replace the weakest figure
-in the paper. Templates in [results/on_device_trials.md](results/on_device_trials.md).
+in the paper. Templates in [experiments/hardware_measurement/on_device_trials.md](../experiments/hardware_measurement/on_device_trials.md).
